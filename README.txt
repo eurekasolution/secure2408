@@ -43,3 +43,6 @@ CREATE TABLE users (
     name  varchar(20),
     pass  varchar(50)
 );
+
+insert into users (id, name, pass) values('test', 'tester', '1111');
+insert into users (id, name, pass) values('admin', 'administrator', '1111');

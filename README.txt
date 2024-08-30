@@ -26,3 +26,20 @@ int main(int argc, char **argv)
 
 
 https://w3schools.com
+
+
+javascript:alert(document.cookie);
+
+
+localhost/phpmyadmin
+
+🤩🤩
+
+
+CREATE TABLE users ( 
+
+    idx integer auto_increment primary key,
+    id  varchar(20) UNIQUE,
+    name  varchar(20),
+    pass  varchar(50)
+);

@@ -1,3 +1,18 @@
+<?php
+    session_save_path("sess");
+    session_start();
+
+    if(isset($_SESSION["kpc_id"]))
+    {
+        echo "login ok<br>";
+    } else
+    {
+        echo "not login<br>";
+    }
+
+    $_SESSION["kpc_id"] = "test";
+    $_SESSION["kpc_name"] = "홍길동";
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>

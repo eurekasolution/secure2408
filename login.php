@@ -12,11 +12,42 @@
 <div class="container mt-5">
     <h2>Login Result</h2>
     <?php
+    function connectDB() {
+        $servername = "localhost";
+        $dbname = "kpc";
+        $username = "kpc";
+        $password = "1111";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        
+        return $conn;
+    }
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $id = htmlspecialchars($_POST['id'], ENT_QUOTES, 'UTF-8');
-        $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES, 'UTF-8');
-        echo "<p><strong>ID:</strong> $id</p>";
-        echo "<p><strong>Password:</strong> $pass</p>";
+        $id = $_POST['id'];
+        $pass = $_POST['pass'];
+
+        // DB 연결
+        $conn = connectDB();
+
+        // SQL 쿼리 실행
+        $sql = "SELECT * FROM users WHERE id = '$id' AND pass = '$pass'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<div class='alert alert-success'>Login successful!</div>";
+        } else {
+            echo "<div class='alert alert-danger'>Invalid ID or Password.</div>";
+        }
+
+        // DB 연결 종료
+        $conn->close();
     } else {
         echo "<div class='alert alert-danger'>Invalid access method.</div>";
     }

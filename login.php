@@ -38,10 +38,18 @@
 
         // SQL 쿼리 실행
         $sql = "SELECT * FROM users WHERE id = '$id' AND pass = '$pass'";
+        
+        // $sql = htmlspecialchars($sql);
+        // $sql = str_replace("--", "", $sql);
+        //$sql = str_replace("'", "", $sql);
+
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "<div class='alert alert-success'>Login successful!</div>";
+            $row = $result->fetch_assoc();
+            $db_id = $row['id']; // DB에 저장된 아이디를 가져옴
+  
+            echo "<div class='alert alert-success'>Login successful! $db_id </div>";
         } else {
             echo "<div class='alert alert-danger'>Invalid ID or Password.</div>";
         }

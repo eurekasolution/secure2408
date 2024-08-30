@@ -39,6 +39,9 @@
     </form>
 </div>
 
+줄바꿈을 하려면 <br>  &lt;br&gt;
+br 태그를 사용합니다.
+
 <!-- Bootstrap JS (optional) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
